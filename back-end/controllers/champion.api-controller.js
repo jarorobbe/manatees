@@ -62,12 +62,46 @@ async function findChampion(req, res) {
     }
 };
 
-const updateChampion = () => {
+async function updateChampion(req, res) {
 
-
+    // Update champion by id
+    try {
+        var champion = await db.db.champion.findByPk(req.params['id']);
+        if (!champion) {
+            res.status(500).send({
+                message: 'Champion with id ' + req.params['id'] + ' not found.'
+            });
+        } else {
+            await champion.update({
+                name: req.body.name,
+                image: req.body.image,
+            });
+            res.status(200).send(champion);
+        }
+    } catch(err) {
+        res.status(500).send({
+            message: err.message || 'Some error occurred while updating the Champion with id ' + req.params['id'] + '.'
+        });
+    }
 };
 
-const deleteChampion = () => {
+async function deleteChampion(req, res) {
+
+    // Delete champion by id
+    try {
+        await db.db.champion.destroy({
+            where: {
+                id: req.params['id']
+            }
+        });
+        res.status(200).send({
+            message: 'Successfully removed the Champion.'
+        });
+    } catch(err) {
+        res.status(500).send({
+            message: err.message || 'Some error occurred while deleting the Champion with id ' + req.params['id'] + '.'
+        });
+    }
 
 };
 

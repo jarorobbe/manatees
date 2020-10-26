@@ -27,7 +27,7 @@ async function createFaction(req, res) {
         res.status(200).send(fact);
     } catch (err) {
         res.status(500).send({
-            message: err.message || "Some error occurred while creating the Faction."
+            message: err.message || 'Some error occurred while creating the Faction.'
         });
     }
  
@@ -41,7 +41,7 @@ async function findAllFactions(req, res) {
         res.status(200).send(factions);
     } catch(err) {
         res.status(500).send({
-            message: err.message || "Some error occurred while finding all the Factions."
+            message: err.message || 'Some error occurred while finding all the Factions.'
         });
     }
 
@@ -49,26 +49,57 @@ async function findAllFactions(req, res) {
 
 async function findFaction(req, res) {
 
-    console.log('received get result with id:',req.params['id']);
-
     // Find faction by id
     try {
-        console.log(db.db);
         const factions = await db.db.faction.findByPk(req.params['id']);
         res.status(200).send(factions);
     } catch(err) {
         res.status(500).send({
-            message: err.message || "Some error occurred while finding all the Factions."
+            message: err.message || 'Some error occurred while finding the Faction with id ' + req.params['id'] + '.'
         });
     }
 };
 
-const updateFaction = () => {
+async function updateFaction(req, res) {
 
-
+    // Update faction by id
+    try {
+        var faction = await db.db.faction.findByPk(req.params['id']);
+        if (!faction) {
+            res.status(500).send({
+                message: 'Faction with id ' + req.params['id'] + ' not found.'
+            });
+        } else {
+            await faction.update({
+                name: req.body.name,
+                image: req.body.image,
+            });
+            res.status(200).send(faction);
+        }
+    } catch(err) {
+        res.status(500).send({
+            message: err.message || 'Some error occurred while updating the Faction with id ' + req.params['id'] + '.'
+        });
+    }
 };
 
-const deleteFaction = () => {
+async function deleteFaction(req, res) {
+
+    // Delete faction by id
+    try {
+        await db.db.faction.destroy({
+            where: {
+                id: req.params['id']
+            }
+        });
+        res.status(200).send({
+            message: 'Successfully removed the Faction.'
+        });
+    } catch(err) {
+        res.status(500).send({
+            message: err.message || 'Some error occurred while deleting the Faction with id ' + req.params['id'] + '.'
+        });
+    }
 
 };
 

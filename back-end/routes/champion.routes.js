@@ -14,6 +14,10 @@ router.post("/", createChampion);
 
 router.get("/", findAllChampions);
 
-router.get("/:id", findChampion);
+router.get('/:id', findChampion);
+
+router.put('/:id', updateChampion);
+
+router.delete('/:id', deleteChampion);
 
 export { router as championRouter };
