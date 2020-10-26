@@ -12,9 +12,11 @@ run back-end in development mode:
 
 ## API
 
-| GET | /api/factions/ | get all factions |
-| POST | /api/factions/ | add a faction |
-| GET | /api/factions/{id} | get faction by id |
-| GET | /api/champions/ | get all champions | 
-| POST | /api/champions/ | add a champion |
-| GET | /api/factions/{id} | get faction by id | 
+| endpoint | type | function |
+|------|----------|----------|
+| /api/factions/ | GET | get all factions |
+| /api/factions/ | POST | add a faction |
+| /api/factions/{id} | GET | get faction by id |
+| /api/champions/ | GET | get all champions | 
+| /api/champions/ | POST | add a champion |
+| /api/factions/{id} | GET | get faction by id | 
