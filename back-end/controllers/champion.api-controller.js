@@ -3,12 +3,11 @@ import { ChampionModel } from '../models/champion-model.js';
 
 /*****************************/
 
-        // CHAMPION Requests
+    // CHAMPION Requests
 
 /*****************************/
 
 async function createChampion(req, res) {
-    console.log('request received!');
 
     // Validate request
     if (!req.body.name) {
@@ -37,14 +36,30 @@ async function createChampion(req, res) {
  
 };
 
-const findAllChampions = () => {
+async function findAllChampions(req, res) {
 
+    // Find all champions
+    try {
+        const champions = await db.db.champion.findAll();
+        res.status(200).send(champions);
+    } catch(err) {
+        res.status(500).send({
+            message: err.message || "Some error occurred while finding all the Champions."
+        });
+    }
 };
 
-const findChampion = (req, res) => {
-    res.status(200).send({
-        message: 'testest'
-    });
+async function findChampion(req, res) {
+
+    // Find champion by id
+    try {
+        const champions = await db.db.champion.findByPk(req.params['id']);
+        res.status(200).send(champions);
+    } catch(err) {
+        res.status(500).send({
+            message: err.message || "Some error occurred while finding all the Champions."
+        });
+    }
 };
 
 const updateChampion = () => {

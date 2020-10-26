@@ -1,6 +1,6 @@
 
-function ChampionModel(sequelize, Sequelize) {
-    const Champion = sequelize.define('champions', {
+function FactionModel(sequelize, Sequelize) {
+    const Faction = sequelize.define('factions', {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -9,17 +9,13 @@ function ChampionModel(sequelize, Sequelize) {
         name: {
             type: Sequelize.STRING,
         },
-        role: {
-            type: Sequelize.STRING,
-        },
         image: {
             type: Sequelize.STRING,
         }
     }); 
 
-    return Champion;
+    return Faction;
 }
 
 
-
-export { ChampionModel };
+export { FactionModel };

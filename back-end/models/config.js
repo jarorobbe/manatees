@@ -9,6 +9,7 @@
 import Sequelize from 'sequelize';
 import dbConfig from '../config/db.config.js';
 import { ChampionModel } from './champion-model.js';
+import { FactionModel } from './faction-model.js';
 //const DbConfig = require('../config/db.config.js');
 
 const sequelize = new Sequelize(
@@ -31,7 +32,19 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.champion = ChampionModel(sequelize, Sequelize);
+var Champion = ChampionModel(sequelize, Sequelize);
+var Faction = FactionModel(sequelize, Sequelize);
+
+// Enable relations between models
+Faction.hasMany(Champion, {as: 'champions'});
+Champion.belongsTo(Faction, 
+    {foreignKey: 'factionId', 
+    as: 'faction'
+});
+
+// Add models to the database
+db.champion = Champion;
+db.faction = Faction;
 
 export default { db, sequelize };
 

@@ -4,7 +4,7 @@ import {
     findChampion,
     updateChampion,
     deleteChampion
-} from '../controllers/api-controller.js';
+} from '../controllers/champion.api-controller.js';
 import express from 'express';
 
 var router = express.Router();
@@ -12,6 +12,8 @@ var router = express.Router();
 // Create new Champion
 router.post("/", createChampion);
 
-router.get("/", findChampion);
+router.get("/", findAllChampions);
+
+router.get("/:id", findChampion);
 
 export { router as championRouter };

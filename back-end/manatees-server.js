@@ -3,6 +3,7 @@ const require = createRequire(import.meta.url);
 
 import db from './models/config.js';
 import { championRouter } from './routes/champion.routes.js';
+import { factionRouter } from './routes/faction.routes.js';
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -27,6 +28,7 @@ server.use(bodyParser.urlencoded({ extended: true }));
 
 // Add routers to the application
 server.use('/api/champions', championRouter);
+server.use('/api/factions', factionRouter);
 
 // Home route
 server.get("/", (req, res) => {
@@ -38,5 +40,5 @@ server.listen(port, () => {
     console.log('Server is running on ', 'http://' + hostname + ':' + port);
 });
 
-// Database
+// Sync database
 db.sequelize.sync();

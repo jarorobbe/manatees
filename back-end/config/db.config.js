@@ -13,8 +13,4 @@ const dbConfig = {
     }
 };
 
-//module.exports.getDbConfig = () => {
-//    return dbConfig;
-//}
-
 export default dbConfig;
