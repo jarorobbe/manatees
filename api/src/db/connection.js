@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://jaror:jarorsecretpass@localhost:27017/manatees', {useNewUrlParser: true, useUnifiedTopology: true});
-const db = mongoose.connection;
 
-module.exports = db;
+mongoose.connect('mongodb://defaultManatee:defaultManateePass@192.168.112.2:27017/manatees', {useNewUrlParser: true, useUnifiedTopology: true});
+
+module.exports = mongoose;
