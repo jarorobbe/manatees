@@ -1,0 +1,19 @@
+{
+  "name": "manatees-api",
+  "version": "1.0.0",
+  "description": "The NodeJSxExpress API for the Manatees project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Jaro Robberechts",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pm2": "^4.5.5"
+  },
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "husky": "^6.0.0"
+  }
+}

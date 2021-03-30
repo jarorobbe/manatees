@@ -6,9 +6,14 @@ Personal project for Manatees web application
 ### Back-end
 
 run back-end in development mode:
+
 ```npm run start:dev```
 
 ### Front-end
+
+run front-end 
+
+```npm run start```
 
 ## API
 
