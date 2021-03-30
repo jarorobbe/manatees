@@ -24,7 +24,7 @@ import "assets/scss/blk-design-system-react.scss?v=1.2.0";
 import "assets/demo/demo.css";
 
 import Index from "views/Index.js";
-import LandingPage from "views/examples/LandingPage.js";
+import ChampionsPage from "views/examples/ChampionsPage.js";
 import RegisterPage from "views/examples/RegisterPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 
@@ -33,8 +33,8 @@ ReactDOM.render(
     <Switch>
       <Route path="/components" render={(props) => <Index {...props} />} />
       <Route
-        path="/landing-page"
-        render={(props) => <LandingPage {...props} />}
+        path="/champions-page"
+        render={(props) => <ChampionsPage {...props} />}
       />
       <Route
         path="/register-page"
