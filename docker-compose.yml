@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+
+  # Mongo DB
+  mongo01:
+    image: mongo:3.6
+    container_name: mongo01
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASS}
+      - MONGO_INITDB_DATABASE=manatees
+    volumes:
+      - data01:/var/data/mongo/db/
+      - ./db/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    expose:
+      - 27019
+    ports:
+      - 127.0.0.1:27019:27019
+    networks:
+      - mongo
+
+volumes:
+  data01:
+    driver: local
+
+networks:
+  mongo:
+    driver: bridge
