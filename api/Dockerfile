@@ -8,6 +8,6 @@ RUN npm ci
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 3001
 
 ENTRYPOINT ["./node_modules/pm2/bin/pm2-runtime", "./src/app.js"]
